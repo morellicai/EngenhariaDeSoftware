@@ -4,7 +4,7 @@ Aqui encontrará meus exercicios de engenharia de software desenvolvidos em **ma
 # Diagrama.md
 Neste arquivo esta o seguinte exercicios: <br>
 ## Diagrama de Sequência - Sistema de Reservas de Hotel
-**Requisitos básicos:**
+**Requisitos básicos:** <br>
 O cliente acessa o site do hotel. <br>
 Ele pode procurar quartos disponíveis fornecendo datas de check-in e check-out.
 O sistema retorna uma lista de quartos disponíveis com os preços.
