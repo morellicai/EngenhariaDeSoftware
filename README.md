@@ -2,10 +2,10 @@
 Aqui encontrará meus exercicios de engenharia de software desenvolvidos em **markdown**.
 
 # Diagrama.md
-Neste arquivo esta o seguinte exercicios: <br>
+Neste arquivo esta o seguinte exercicios:
 ## Diagrama de Sequência - Sistema de Reservas de Hotel
-**Requisitos básicos:** <br>
-O cliente acessa o site do hotel. <br>
+**Requisitos básicos:**
+O cliente acessa o site do hotel.
 Ele pode procurar quartos disponíveis fornecendo datas de check-in e check-out.
 O sistema retorna uma lista de quartos disponíveis com os preços.
 O cliente seleciona um quarto e prossegue para a reserva.
@@ -14,4 +14,3 @@ O sistema valida os detalhes do cartão e confirmar a reserva.
 Uma confirmação é enviada ao cliente via email.
 **Tarefa:**
 Desenhe um diagrama de sequência que represente o processo de reserva de quarto no hotel, considerando os requisitos básicos acima.
----
