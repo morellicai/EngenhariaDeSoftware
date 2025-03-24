@@ -1,7 +1,7 @@
 # Bem vindo
 Aqui encontrará meus exercicios de engenharia de software desenvolvidos em **markdown**.
 
-# Diagrama.md
+# diagrama.md
 Neste arquivo esta o seguinte exercicios:
 ## Diagrama de Sequência - Sistema de Reservas de Hotel
 **Requisitos básicos:**
