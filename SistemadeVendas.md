@@ -8,7 +8,7 @@ O vendedor pode repetir os passos 1-4 para adicionar mais livros à venda. <br>
 O vendedor conclui a venda e o sistema calcula o total. <br>
 O sistema emite uma nota fiscal para o cliente. <br>
 ### Tarefa 1: Diagrama de Caso de Uso<br>
-Desenhe um diagrama de caso de uso representando as operações descritas nos requisitos básicos.
+Desenhe um diagrama de caso de uso representando as operações descritas nos requisitos básicos. <br>
 ![Caso De Uso](SistemVendasCasodeUso.png)
 ### Tarefa 2: Diagrama de Classes
 Identifique as classes envolvidas neste sistema e suas relações e crie um diagrama de classes. Lembre-se de considerar atributos e métodos básicos para as classes.
