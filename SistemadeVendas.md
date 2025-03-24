@@ -9,22 +9,7 @@ O vendedor conclui a venda e o sistema calcula o total. <br>
 O sistema emite uma nota fiscal para o cliente. <br>
 ### Tarefa 1: Diagrama de Caso de Uso<br>
 Desenhe um diagrama de caso de uso representando as operações descritas nos requisitos básicos.
-```plantuml
-@startuml name
-left to right direction
-actor Vendedor
-rectangle Sistema {
-  usecase "Buscar Livro" as UC1
-  usecase "Adicionar à Venda" as UC2
-  usecase "Concluir Venda" as UC3
-  usecase "Emitir Nota Fiscal" as UC4
-}
-Vendedor --> UC1
-Vendedor --> UC2
-Vendedor --> UC3
-Vendedor --> UC4
-@enduml
-```
+![Caso De Uso](SistemVendasCasodeUso.png)
 ### Tarefa 2: Diagrama de Classes
 Identifique as classes envolvidas neste sistema e suas relações e crie um diagrama de classes. Lembre-se de considerar atributos e métodos básicos para as classes.
 ```mermaid
