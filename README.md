@@ -11,6 +11,6 @@ O sistema retorna uma lista de quartos disponíveis com os preços.
 O cliente seleciona um quarto e prossegue para a reserva.
 Ele fornece detalhes pessoais e detalhes do cartão de crédito.
 O sistema valida os detalhes do cartão e confirmar a reserva.
-Uma confirmação é enviada ao cliente via email.
+Uma confirmação é enviada ao cliente via email. <br>
 **Tarefa:**
 Desenhe um diagrama de sequência que represente o processo de reserva de quarto no hotel, considerando os requisitos básicos acima.
