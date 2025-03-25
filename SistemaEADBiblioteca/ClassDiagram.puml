@@ -1,0 +1,54 @@
+@startuml ClassDiagram
+class Usuario {
+  + id: int
+  + nome: String
+  + email: String
+  + senha: String
+  + login()
+  + logout()
+}
+
+class Leitor {
+  + limiteReservas: int
+  + reservarItem()
+  + lerOnline()
+}
+
+class Administrador {
+  + adicionarItem()
+  + removerItem()
+  + atualizarItem()
+}
+
+class Item {
+  + id: int
+  + titulo: String
+  + autor: String
+  + disponivel: boolean
+}
+
+class Livro {
+  + ISBN: String
+}
+
+class Revista {
+  + edicao: int
+}
+
+class Artigo {
+  + doi: String
+}
+
+class Reserva {
+  + dataReserva: Date
+  + status: String
+}
+
+Usuario <|-- Leitor
+Usuario <|-- Administrador
+Item <|-- Livro
+Item <|-- Revista
+Item <|-- Artigo
+Leitor "1" -- "0..*" Reserva
+Item "1" -- "0..*" Reserva
+@enduml

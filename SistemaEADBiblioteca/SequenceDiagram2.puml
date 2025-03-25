@@ -1,0 +1,99 @@
+@startuml SequenceDiagram
+actor Leitor
+boundary UserInterface
+control "SistemaReserva" as Control
+entity "Item" as Item
+database "BancoDeDados" as BD
+
+Leitor -> UserInterface: Login (Login, Senha)
+activate UserInterface
+UserInterface -> Control: Verificar Credenciais
+activate Control
+
+Control -> BD: Validar credenciais
+activate BD
+
+alt Credenciais Inválidas
+    BD --> Control: Credenciais inválidas
+    Control --> UserInterface: Acesso Negado
+    deactivate Control
+else Credenciais Válidas
+    BD --> Control: Credenciais válidas
+    deactivate BD
+    activate Control
+    Control --> UserInterface: Acesso Permitido
+    deactivate Control
+
+    Leitor -> UserInterface: Buscar Item
+
+    UserInterface -> Control: Solicitar Busca
+    activate Control
+
+    Control -> BD: Consultar Item
+    activate BD
+    BD --> Item: Obter detalhes
+    activate Item
+    Item --> BD: Detalhes do item
+    deactivate Item
+    BD --> Control: Resultado da busca
+    deactivate BD
+
+    alt Item Não Encontrado
+        Control --> UserInterface: "Item não encontrado"
+
+    else Item Encontrado
+        Control --> UserInterface: Exibir detalhes do item
+        deactivate Control
+
+        Leitor -> UserInterface: Solicitar Reserva
+
+        UserInterface -> Control: Processar Reserva
+        activate Control
+
+        Control -> BD: Verificar disponibilidade
+        activate BD
+        BD --> Control: Status disponibilidade
+        deactivate BD
+
+        alt Item Indisponível
+            Control --> UserInterface: "Item indisponível"
+            UserInterface -> UserInterface: Oferecer notificação
+
+
+        else Item Disponível
+            Control -> BD: Verificar limite de reservas
+            activate BD
+            BD --> Control: Limite atual
+            deactivate BD
+
+            alt Limite Atingido
+                Control --> UserInterface: "Limite de reservas atingido"
+                deactivate Control
+
+            else Limite Disponível
+                Control -> BD: Criar Reserva
+                activate Control
+                activate BD
+                BD -> Item: Atualizar status
+                activate Item
+                Item --> BD: Confirmação
+                deactivate Item
+                BD --> Control: Reserva registrada
+                deactivate BD
+
+                Control --> UserInterface: "Reserva confirmada para 7 dias"
+                deactivate Control
+
+                opt Leitura Online Opcional
+                    Leitor -> UserInterface: Ler Online
+                    UserInterface -> Control: Abrir Visualizador
+                    activate Control
+                    Control --> UserInterface: Exibir conteúdo
+                    deactivate Control
+                    deactivate UserInterface
+                end
+            end
+        end
+    end
+end
+@enduml

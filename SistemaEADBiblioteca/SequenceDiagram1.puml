@@ -1,0 +1,58 @@
+@startuml SequenceDiagram
+actor Leitor
+boundary UserInterface
+control "Reserva" as control
+entity Item as Item
+database "Banco de Dados" as BD
+
+Leitor -> UserInterface: Login (Login, Senha)
+activate UserInterface
+UserInterface -> control: Verificar Credenciais
+activate control
+control -> BD: Credenciais Válidas?
+activate BD
+alt Credenciais Inválidas
+    BD --> control: Credenciais Inválidas
+    control --> UserInterface: Acesso Negado
+end
+alt Credenciais Válidas
+    BD --> control: Credenciais Válidas
+    deactivate BD
+    control --> UserInterface: Acesso Permitido
+    deactivate control
+    Leitor -> UserInterface: Buscar o Item
+    UserInterface -> control: Solicita o Item (Titulo/Autor)
+    activate control
+    control -> BD: Busca Item
+    activate BD
+    BD --> Item: Obter Detalhes
+    deactivate BD
+    activate Item
+    Item --> control: Retorna Item
+    deactivate Item
+    control --> UserInterface: Exibe Item e Detalhes
+    deactivate control
+    Leitor -> UserInterface: Solicita a Reserva do Item
+    UserInterface -> control: Solicita Reserva
+    activate control
+    control -> BD: Verifica Disponibilidade
+    activate BD
+    BD --> control: Disponibilidade
+    deactivate BD
+    alt Disponivel
+        control -> BD: Marca Reserva
+        activate BD
+        BD --> Item: Atualiza disponibilidade
+        deactivate BD
+        activate Item
+        Item --> control: Reserva Marcada com Sucesso!
+        deactivate Item
+        control --> UserInterface: Reserva Confirmada
+    end
+    alt Indisponivel
+        control --> UserInterface: Item Indisponível
+        deactivate control
+        deactivate UserInterface
+    end
+end
+@enduml
